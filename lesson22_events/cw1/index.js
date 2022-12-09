@@ -42,7 +42,7 @@ btn.forEach((btns) => {
   btns.addEventListener('click', (e) => {
     let wichBtn = e.target.classList;
     if (wichBtn.contains('clear-btn')) {
-      eventsListElem.replaceChildren();
+      eventsListElem.innerHTML = '';
     }
     if (wichBtn.contains('remove-handlers-btn')) {
       remover();
