@@ -43,3 +43,45 @@ const callRender = () => {
   renderTasks(tasks);
 };
 callRender();
+
+// create task
+
+const createBtnElem = document.querySelector('.create-task-btn');
+
+const createNewTask = () => {
+  const inputElem = document.querySelector('.task-input');
+  const text = inputElem.value;
+  if (!inputElem.value) {
+    return;
+  }
+
+  inputElem.value = '';
+  tasks.push({
+    text,
+    done: false,
+    id: Math.random().toString(),
+  });
+
+  renderTasks(tasks);
+};
+
+createBtnElem.addEventListener('click', createNewTask);
+
+// update task
+
+const onToggleTask = (e) => {
+  const targetElem = e.target;
+
+  const isCheckbox = targetElem.classList.contains('list__item-checkbox');
+  if (!isCheckbox) {
+    return;
+  }
+
+  let targetElemId = targetElem.getAttribute('data-id');
+  const taskData = tasks.find((task) => task.id === targetElemId);
+  const done = targetElem.checked;
+  taskData.done = done;
+};
+
+listElem.addEventListener('click', onToggleTask);
+listElem.addEventListener('click', callRender);
