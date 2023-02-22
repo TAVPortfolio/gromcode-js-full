@@ -14,10 +14,13 @@ const onCounterChange = (e) => {
   counterValueElem.textContent = newValue;
 };
 
-const onStorageChange = (e) => {
-  counterValueElem.textContent = e.newValue;
-};
+const onStorageChange = (e) => (counterValueElem.textContent = e.newValue);
+
+const onDocumentLoaded = () =>
+  (counterValueElem.textContent = localStorage.getItem('counter') || 0);
 
 document.querySelector('.counter').addEventListener('click', onCounterChange);
 
 window.addEventListener('storage', onStorageChange);
+
+document.addEventListener('DOMContentLoaded', onDocumentLoaded);
