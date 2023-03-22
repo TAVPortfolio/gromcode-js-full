@@ -16,11 +16,11 @@ allInput.forEach((elem) => elem.addEventListener('input', addNewUser));
 const saveUser = () => {
   const userEmail = document.querySelector('[type = "email"]').value;
   const userName = document.querySelector('[type = "text"]').value;
-  const password = document.querySelector('[type = "text"]').value;
+  const userPassword = document.querySelector('[type = "password"]').value;
   const userData = {
     email: `${userEmail}`,
     name: `${userName}`,
-    password: `${password}`,
+    password: `${userPassword}`,
   };
   return userData;
 };
